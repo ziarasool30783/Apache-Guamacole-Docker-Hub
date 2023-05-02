@@ -23,8 +23,7 @@ server {
     proxy_set_header Connection $http_connection;
     proxy_cookie_path /guacamole/ /;
     access_log off;
-    # allow large uploads (default=1m)
-    # 4096m = 4GByte
+
     client_max_body_size 4096m;
 }
 
