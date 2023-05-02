@@ -54,8 +54,8 @@ services:
     - guacd
     networks:
       guacnetwork_compose:
-    ports:
-    - 8080/tcp
+   # ports:
+   # - 8080/tcp
     restart: on-failure
 
   # nginx
