@@ -12,7 +12,7 @@ services:
   # guacd
   guacd:
     container_name: guacd_compose
-    image: ${IMAGE1}
+    image: ${guacd_image}
     networks:
       guacnetwork_compose:
     restart: on-failure
@@ -27,7 +27,7 @@ services:
       POSTGRES_DB: guacamole_db
       POSTGRES_PASSWORD: 'systems1234'
       POSTGRES_USER: guacamole_user
-    image: ${IMAGE2}
+    image: ${postgres_image}
     networks:
       guacnetwork_compose:
     restart: on-failure
@@ -47,7 +47,7 @@ services:
       POSTGRES_HOSTNAME: postgres
       POSTGRES_PASSWORD: 'systems1234'
       POSTGRES_USER: guacamole_user
-    image: ${IMAGE3}
+    image: ${guacamole_image}
     links:
     - guacd
     networks:
@@ -60,7 +60,7 @@ services:
   nginx:
    container_name: nginx_guacamole_compose
    restart: on-failure
-   image: ${IMAGE4}
+   image: ${nginx_image}
    volumes:
    - ./nginx/templates:/etc/nginx/templates:ro
    - ./nginx/ssl/self.cert:/etc/nginx/ssl/self.cert:ro
